@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #a77b49;
+  --color-secondary: #2b2520;
+  --font-sans: var(--font-roboto);
+  --font-heading: var(--font-great-vibes);
+}
