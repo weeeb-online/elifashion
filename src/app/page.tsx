@@ -1,16 +1,19 @@
 import Image from "next/image";
-
-const whatsapp = (message: string) =>
-  `https://wa.me/558899951396?text=${encodeURIComponent(message)}`;
+import { ArrowRight, Baby, Mars, MessageCircle, Venus } from "lucide-react";
+import { whatsapp } from "@/lib/whatsapp";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
 const collections = [
   {
+    icon: Venus,
     name: "Feminino",
     image: "/images/feminino.png",
     alt: "Modelo com conjunto feminino claro",
     description: "Peças para acompanhar sua rotina com leveza e personalidade.",
   },
   {
+    icon: Mars,
     name: "Masculino",
     image: "/images/masculino.png",
     alt: "Modelo com camisa e jaqueta masculina",
@@ -18,6 +21,7 @@ const collections = [
       "Escolhas versáteis para um visual seguro em qualquer ocasião.",
   },
   {
+    icon: Baby,
     name: "Infantil",
     image: "/images/infantil.png",
     alt: "Criança com roupa infantil clara",
@@ -25,59 +29,14 @@ const collections = [
   },
 ];
 
-function Arrow() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="h-5 w-5">
-      <path
-        d="M5 12h14m-6-6 6 6-6 6"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#fcfaf6] text-secondary">
       <div className="bg-secondary px-5 py-2.5 text-center text-[11px] font-medium tracking-[0.16em] text-[#f8ead3] sm:text-xs">
         MODA FEMININA, MASCULINA E INFANTIL NO CENTRO DE GUARACIABA DO NORTE
       </div>
-      <header className="border-b border-[#e8dfd2]">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4 sm:px-8 lg:px-12">
-          <a
-            href="#inicio"
-            aria-label="Eli Fashion, voltar ao início"
-            className="shrink-0 font-heading text-[37px] leading-none text-[#9c7444] sm:text-[43px]"
-          >
-            Eli Fashion
-          </a>
-          <nav
-            aria-label="Navegação principal"
-            className="hidden items-center gap-8 text-[13px] font-medium text-[#594e43] md:flex"
-          >
-            <a href="#colecoes" className="transition hover:text-primary">
-              Coleções
-            </a>
-            <a href="#destaques" className="transition hover:text-primary">
-              Destaques
-            </a>
-            <a href="#sobre" className="transition hover:text-primary">
-              Nossa loja
-            </a>
-          </nav>
-          <a
-            href={whatsapp("Olá, Eli Fashion! Gostaria de falar com a loja.")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border border-primary px-4 py-2.5 text-xs font-medium text-[#815d36] transition hover:bg-primary hover:text-white sm:px-5 sm:text-sm"
-          >
-            Fale conosco <Arrow />
-          </a>
-        </div>
-      </header>
+
+      <Header />
 
       <main id="inicio">
         <section className="mx-auto grid max-w-7xl items-center gap-8 px-5 py-10 sm:px-8 sm:py-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14 lg:px-12 lg:py-20">
@@ -102,7 +61,7 @@ export default function Home() {
                 href="#destaques"
                 className="inline-flex items-center gap-3 bg-primary px-6 py-4 text-sm font-medium text-white transition hover:bg-[#8d663b]"
               >
-                Explore os destaques <Arrow />
+                Explore os destaques <ArrowRight />
               </a>
               <a
                 href={whatsapp(
@@ -160,9 +119,9 @@ export default function Home() {
               </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
-              {collections.map((item, index) => (
+              {collections.map(({ icon: Icon, name }, index) => (
                 <a
-                  key={item.name}
+                  key={name}
                   href={`#destaque-${index}`}
                   className="group flex items-center justify-between border border-[#e3d8c8] bg-[#fcfaf6] px-6 py-6 transition hover:border-[#b99062] hover:bg-white"
                 >
@@ -170,10 +129,10 @@ export default function Home() {
                     <span className="text-[10px] tracking-[0.22em] text-[#ad8c65]">
                       0{index + 1} / COLEÇÃO
                     </span>
-                    <h3 className="mt-2 text-xl font-medium">{item.name}</h3>
+                    <h3 className="mt-2 text-xl font-medium">{name}</h3>
                   </div>
                   <span className="text-primary transition group-hover:translate-x-1">
-                    <Arrow />
+                    <Icon />
                   </span>
                 </a>
               ))}
@@ -230,7 +189,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-[#805b35] transition hover:text-primary"
                 >
-                  Pergunte sobre as peças <Arrow />
+                  Pergunte sobre as peças <ArrowRight />
                 </a>
               </article>
             ))}
@@ -266,7 +225,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="mt-7 inline-flex items-center gap-3 border border-[#8d663b] px-6 py-4 text-sm font-medium text-[#72512f] transition hover:bg-[#8d663b] hover:text-white"
               >
-                Pergunte como chegar <Arrow />
+                Pergunte como chegar <ArrowRight />
               </a>
             </div>
             <div className="border border-[#cdbda8] bg-[#fcfaf6] p-7 sm:p-10">
@@ -295,7 +254,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="mt-2 inline-block text-xl font-medium transition hover:text-primary"
               >
-                +55 88 9995-1396
+                +55 88 9767-0377
               </a>
             </div>
           </div>
@@ -320,30 +279,12 @@ export default function Home() {
             rel="noopener noreferrer"
             className="mt-8 inline-flex items-center gap-3 bg-[#c49a68] px-7 py-4 text-sm font-semibold text-secondary transition hover:bg-[#dfb987]"
           >
-            Conversar no WhatsApp <Arrow />
+            Conversar no WhatsApp <MessageCircle />
           </a>
         </section>
       </main>
-      <footer className="bg-[#fcfaf6] px-5 py-8 sm:px-8 lg:px-12">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <span className="font-heading text-3xl text-primary">
-              Eli Fashion
-            </span>
-            <p className="mt-1 text-xs text-[#807367]">
-              Moda feminina, masculina e infantil · Guaraciaba do Norte, CE
-            </p>
-          </div>
-          <a
-            href={whatsapp("Olá, Eli Fashion! Gostaria de entrar em contato.")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-medium text-[#805b35] transition hover:text-primary"
-          >
-            Fale com a loja ↗
-          </a>
-        </div>
-      </footer>
+
+      <Footer />
     </div>
   );
 }
