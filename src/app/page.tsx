@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import { ArrowRight, Baby, Mars, MessageCircle, Venus } from "lucide-react";
 import { whatsapp } from "@/lib/whatsapp";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { useReveal } from "@/hooks/use-reveal";
 
 const collections = [
   {
@@ -30,8 +33,10 @@ const collections = [
 ];
 
 export default function Home() {
+  const revealRef = useReveal<HTMLDivElement>();
+
   return (
-    <div className="min-h-screen bg-[#fcfaf6] text-secondary">
+    <div ref={revealRef} className="min-h-screen">
       <div className="bg-secondary px-5 py-2.5 text-center text-[11px] font-medium tracking-[0.16em] text-[#f8ead3] sm:text-xs">
         MODA FEMININA, MASCULINA E INFANTIL NO CENTRO DE GUARACIABA DO NORTE
       </div>
@@ -40,7 +45,7 @@ export default function Home() {
 
       <main id="inicio">
         <section className="mx-auto grid max-w-7xl items-center gap-8 px-5 py-10 sm:px-8 sm:py-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14 lg:px-12 lg:py-20">
-          <div className="order-2 lg:order-1">
+          <div data-reveal className="order-2 lg:order-1">
             <div className="mb-6 flex items-center gap-3 text-[11px] font-semibold tracking-[0.3em] text-primary">
               <span className="h-px w-8 bg-primary" /> ELEGÂNCIA PARA TODOS
             </div>
@@ -79,7 +84,10 @@ export default function Home() {
               NORTE · CEARÁ
             </div>
           </div>
-          <div className="order-1 relative overflow-hidden bg-[#e8dfd2] lg:order-2">
+          <div
+            data-reveal
+            className="order-1 relative overflow-hidden bg-[#e8dfd2] lg:order-2"
+          >
             <Image
               src="/images/hero.png"
               alt="Modelos com looks femininos e masculinos em tons neutros"
@@ -104,7 +112,10 @@ export default function Home() {
           className="border-y border-[#e8dfd2] bg-[#f5f0e8] px-5 py-12 sm:px-8 lg:px-12"
         >
           <div className="mx-auto max-w-7xl">
-            <div className="mb-8 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+            <div
+              data-reveal
+              className="mb-8 flex flex-col justify-between gap-3 sm:flex-row sm:items-end"
+            >
               <div>
                 <p className="text-[11px] font-semibold tracking-[0.3em] text-primary">
                   PARA CADA ESTILO
@@ -123,6 +134,7 @@ export default function Home() {
                 <a
                   key={name}
                   href={`#destaque-${index}`}
+                  data-reveal
                   className="group flex items-center justify-between border border-[#e3d8c8] bg-[#fcfaf6] px-6 py-6 transition hover:border-[#b99062] hover:bg-white"
                 >
                   <div>
@@ -144,7 +156,7 @@ export default function Home() {
           id="destaques"
           className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24"
         >
-          <div className="mb-9 text-center">
+          <div data-reveal className="mb-9 text-center">
             <p className="text-[11px] font-semibold tracking-[0.3em] text-primary">
               INSPIRAÇÃO PARA SE VESTIR
             </p>
@@ -161,6 +173,7 @@ export default function Home() {
               <article
                 id={`destaque-${index}`}
                 key={item.name}
+                data-reveal
                 className="scroll-mt-8"
               >
                 <div className="overflow-hidden bg-[#eee6db]">
@@ -194,7 +207,7 @@ export default function Home() {
               </article>
             ))}
           </div>
-          <p className="mt-8 text-center text-xs text-[#93877b]">
+          <p data-reveal className="mt-8 text-center text-xs text-[#93877b]">
             Imagens ilustrativas. Consulte a disponibilidade das peças pelo
             WhatsApp.
           </p>
@@ -205,7 +218,7 @@ export default function Home() {
           className="bg-[#eae0d2] px-5 py-16 sm:px-8 lg:px-12 lg:py-20"
         >
           <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1fr_0.85fr] lg:gap-20">
-            <div>
+            <div data-reveal>
               <p className="text-[11px] font-semibold tracking-[0.3em] text-[#906b41]">
                 PERTO DE VOCÊ
               </p>
@@ -228,7 +241,10 @@ export default function Home() {
                 Pergunte como chegar <ArrowRight />
               </a>
             </div>
-            <div className="border border-[#cdbda8] bg-[#fcfaf6] p-7 sm:p-10">
+            <div
+              data-reveal
+              className="border border-[#cdbda8] bg-[#fcfaf6] p-7 sm:p-10"
+            >
               <span className="font-heading text-5xl text-primary">
                 Eli Fashion
               </span>
@@ -260,7 +276,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-secondary px-5 py-16 text-center text-[#f8f3eb] sm:px-8 lg:px-12 lg:py-20">
+        <section
+          data-reveal
+          className="bg-secondary px-5 py-16 text-center text-[#f8f3eb] sm:px-8 lg:px-12 lg:py-20"
+        >
           <p className="text-[11px] font-semibold tracking-[0.3em] text-[#c6a273]">
             ESTAMOS A UM CLIQUE DE DISTÂNCIA
           </p>

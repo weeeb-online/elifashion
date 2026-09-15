@@ -14,7 +14,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="pt-BR"
       className={`${fontSans.variable} ${fontHeading.variable} h-full scroll-smooth antialiased motion-reduce:scroll-auto`}
     >
-      <body className="flex min-h-full flex-col font-sans">{children}</body>
+      <body className="flex min-h-full flex-col bg-[#fcfaf6] text-secondary font-sans">
+        {children}
+      </body>
     </html>
   );
 }
